@@ -28,7 +28,7 @@ export class UserService {
 
     const user = plainToClass(User, input);
 
-    user.password = await hash(input.password, 10);
+    // user.password = await hash(input.password, 10);
 
     this.logger.log(ctx, `calling ${UserRepository.name}.saveUser`);
     await this.repository.save(user);
@@ -122,21 +122,19 @@ export class UserService {
     this.logger.log(ctx, `${this.updateUser.name} was called`);
 
     this.logger.log(ctx, `calling ${UserRepository.name}.getById`);
-    const user = await this.repository.getById(userId);
+    const user: User = await this.repository.getById(userId);
+    delete user.password;
 
-    // Hash the password if it exists in the input payload.
-    if (input.password) {
-      input.password = await hash(input.password, 10);
-    }
-
-    // merges the input (2nd line) to the found user (1st line)
     const updatedUser: User = {
       ...user,
       ...plainToClass(User, input),
     };
+    // const updatedUser = Object.assign(user, input);
 
     this.logger.log(ctx, `calling ${UserRepository.name}.save`);
+
     await this.repository.save(updatedUser);
+    // await this.repository.update({ id: user.id }, updatedUser);
 
     return plainToClass(UserOutput, updatedUser, {
       excludeExtraneousValues: true,

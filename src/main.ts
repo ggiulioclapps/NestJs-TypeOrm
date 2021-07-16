@@ -6,8 +6,12 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { RequestIdMiddleware } from './shared/middlewares/request-id/request-id.middleware';
 import { VALIDATION_PIPE_OPTIONS } from './shared/constants';
+import { initializeTransactionalContext } from 'typeorm-transactional-cls-hooked';
 
 async function bootstrap() {
+
+  initializeTransactionalContext();
+
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('api/v1');
 

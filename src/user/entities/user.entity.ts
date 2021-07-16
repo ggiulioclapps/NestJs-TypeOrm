@@ -2,13 +2,12 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  OneToMany,
   PrimaryGeneratedColumn,
   Unique,
   UpdateDateColumn,
 } from 'typeorm';
 
-import { Article } from '../../article/entities/article.entity';
+import { ROLE,RolesType } from '../../auth/constants/role.constant';
 
 @Entity('users')
 export class User {
@@ -25,8 +24,8 @@ export class User {
   @Column({ length: 200 })
   username: string;
 
-  @Column('simple-array')
-  roles: string[];
+  @Column({ type: 'enum', enum: ROLE, default: 'USER' })
+  roles: RolesType;
 
   @Column()
   isAccountDisabled: boolean;
@@ -41,6 +40,11 @@ export class User {
   @UpdateDateColumn({ name: 'updatedAt', nullable: true })
   updatedAt: Date;
 
-  @OneToMany(() => Article, (article) => article.author)
-  articles: Article[];
+  // @BeforeInsert()
+  // @BeforeUpdate()
+  // async setPassword() {
+  //   if (this.password) {
+  //     this.password = await hash(this.password, 10);
+  //   }
+  // }
 }

@@ -389,6 +389,6 @@ Temporary Items
 # Local
 .env
 dist
-local/
+locale
 documentation
 test-report.xml

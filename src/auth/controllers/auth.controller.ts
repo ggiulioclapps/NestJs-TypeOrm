@@ -20,9 +20,9 @@ import { RefreshTokenInput } from '../dtos/auth-refresh-token-input.dto';
 import { JwtRefreshGuard } from '../guards/jwt-refresh.guard';
 import {
   BaseApiErrorResponse,
-  BaseApiResponse,
-  SwaggerBaseApiResponse,
-} from '../../shared/dtos/base-api-response.dto';
+  BaseApiResponse, SwaggerBaseApiResponse,
+}
+  from '../../shared/dtos/base-api-response.dto';
 import { ReqContext } from '../../shared/request-context/req-context.decorator';
 import { RequestContext } from '../../shared/request-context/request-context.dto';
 import { AppLogger } from '../../shared/logger/logger.service';

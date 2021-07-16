@@ -1,4 +1,5 @@
 export default (): any => ({
+  logLevel: process.env.LOG_LEVEL,
   env: process.env.APP_ENV,
   port: process.env.APP_PORT,
   database: {

@@ -1,38 +1,47 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { Expose } from 'class-transformer';
+
+import { Exclude, Expose } from 'class-transformer';
 
 import { ROLE } from '../../auth/constants/role.constant';
+import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
 
 export class UserOutput {
   @Expose()
-  @ApiProperty()
   id: number;
 
   @Expose()
-  @ApiProperty()
   name: string;
 
   @Expose()
-  @ApiProperty()
   username: string;
 
   @Expose()
-  @ApiProperty({ example: [ROLE.USER] })
   roles: ROLE[];
 
   @Expose()
-  @ApiProperty()
   email: string;
 
   @Expose()
-  @ApiProperty()
   isAccountDisabled: boolean;
 
   @Expose()
-  @ApiProperty()
   createdAt: string;
 
   @Expose()
-  @ApiProperty()
   updatedAt: string;
+}
+
+export class UserResponse {
+  @Expose()
+  data: UserOutput;
+
+  @Expose()
+  meta: any;
+}
+
+export class UsersResponse {
+  @Expose()
+  data: Array<UserOutput>;
+
+  @Expose()
+  meta: any;
 }

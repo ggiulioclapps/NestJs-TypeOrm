@@ -1,6 +1,7 @@
 import { Injectable, Scope } from '@nestjs/common';
 import { createLogger, Logger, transports } from 'winston';
 import { RequestContext } from '../request-context/request-context.dto';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable({ scope: Scope.TRANSIENT })
 export class AppLogger {
@@ -11,8 +12,9 @@ export class AppLogger {
     this.context = context;
   }
 
-  constructor() {
+  constructor(private configService: ConfigService) {
     this.logger = createLogger({
+      level: this.configService.get(<string>('logLevel')),
       transports: [new transports.Console()],
     });
   }

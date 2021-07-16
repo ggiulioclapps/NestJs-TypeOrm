@@ -25,7 +25,7 @@ describe('UserService', () => {
     id: 6,
     username: 'jhon',
     name: 'Jhon doe',
-    roles: [ROLE.USER],
+    roles: ROLE.USER,
   };
 
   const mockedLogger = { setContext: jest.fn(), log: jest.fn() };
@@ -67,7 +67,7 @@ describe('UserService', () => {
         name: user.name,
         username: user.username,
         password: 'plain-password',
-        roles: [ROLE.USER],
+        roles: ROLE.USER,
         isAccountDisabled: false,
         email: 'randomUser@random.com',
       };
@@ -81,7 +81,7 @@ describe('UserService', () => {
         name: user.name,
         username: user.username,
         password: 'plain-password',
-        roles: [ROLE.USER],
+        roles: ROLE.USER,
         isAccountDisabled: false,
         email: 'randomUser@random.com',
       };
@@ -92,7 +92,7 @@ describe('UserService', () => {
         name: user.name,
         username: user.username,
         password: 'hashed-password',
-        roles: [ROLE.USER],
+        roles: ROLE.USER,
         isAccountDisabled: false,
         email: 'randomUser@random.com',
       });
@@ -108,7 +108,7 @@ describe('UserService', () => {
         name: user.name,
         username: user.username,
         password: 'plain-password',
-        roles: [ROLE.USER],
+        roles: ROLE.USER,
         isAccountDisabled: false,
         email: 'randomUser@random.com',
       };
@@ -119,7 +119,7 @@ describe('UserService', () => {
         id: user.id,
         name: userInput.name,
         username: userInput.username,
-        roles: [ROLE.USER],
+        roles: ROLE.USER,
         isAccountDisabled: false,
         email: 'randomUser@random.com',
       });
@@ -150,7 +150,7 @@ describe('UserService', () => {
         id: user.id,
         name: user.name,
         username: user.username,
-        roles: [ROLE.USER],
+        roles: ROLE.USER,
       });
     });
 
@@ -178,7 +178,7 @@ describe('UserService', () => {
         id: user.id,
         name: user.name,
         username: user.username,
-        roles: [ROLE.USER],
+        roles: ROLE.USER,
       });
     });
 
@@ -236,7 +236,7 @@ describe('UserService', () => {
         id: user.id,
         name: user.name,
         username: user.username,
-        roles: [ROLE.USER],
+        roles: ROLE.USER,
       });
     });
   });
@@ -272,7 +272,7 @@ describe('UserService', () => {
         id: user.id,
         name: user.name,
         username: user.username,
-        roles: [ROLE.USER],
+        roles: ROLE.USER,
       });
     });
 
@@ -296,12 +296,11 @@ describe('UserService', () => {
         name: 'Default User',
         username: 'default-user',
         password: 'random-password',
-        roles: [ROLE.USER],
+        roles: ROLE.USER,
         isAccountDisabled: false,
         email: 'randomUser@random.com',
         createdAt: currentDate,
         updatedAt: currentDate,
-        articles: [],
       };
 
       mockedRepository.getById.mockResolvedValue(foundUser);
@@ -311,12 +310,11 @@ describe('UserService', () => {
         name: input.name,
         username: 'default-user',
         password: input.password,
-        roles: [ROLE.USER],
+        roles: ROLE.USER,
         isAccountDisabled: false,
         email: 'randomUser@random.com',
         createdAt: currentDate,
         updatedAt: currentDate,
-        articles: [],
       };
 
       jest

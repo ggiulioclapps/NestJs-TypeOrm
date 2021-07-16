@@ -30,12 +30,11 @@ describe('UserRepository', () => {
         name: 'Default User',
         username: 'default-user',
         password: 'random-password',
-        roles: [ROLE.USER],
+        roles: ROLE.USER,
         isAccountDisabled: false,
         email: 'default-user@random.com',
         createdAt: currentDate,
         updatedAt: currentDate,
-        articles: [],
       };
 
       jest.spyOn(repository, 'findOne').mockResolvedValue(expectedOutput);
@@ -49,7 +48,7 @@ describe('UserRepository', () => {
         name: 'Default User',
         username: 'default-user',
         password: 'random-password',
-        roles: [ROLE.USER],
+        roles: ROLE.USER,
         isAccountDisabled: false,
         email: 'default-user@random.com',
         createdAt: currentDate,
